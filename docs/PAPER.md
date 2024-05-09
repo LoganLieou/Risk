@@ -21,22 +21,21 @@ There's four parts to a model for arbitrage in Eve Online first, we need to
 identify canidates i.e. what are potentially profitable trades? Second there's
 some amount of time it will take to execute the trade, so we need to have some
 idea of future price, in Eve trades take quite a while, we can estimate the
-time given path length $n$ and the rate parameter $\lambda{}$ (time to jump
-follows a poisson distrobution) after this we can construct a 98% confidence
-interval for the price of the asset at time $t$ using the asset's variance
-retrieved from historic data, monte carlo simulation, and geometric brownian
-motion. Third we need to calculate the probability of failure, as of right now
-this is somewhat hard to do it's possible to use machine learning here as a
-truly accurate picture will need to pull data from the player themselves as
-it's somewhat difficult to quantify a pilot's skill, so for now I have a fairly
-generic function $P(F) = P(g) * P(d)$ where $g$ is probability of getting
-ganked and $P(d)$ is the probability of dying to a gank. Lastly since the
-result of failure is total loss of all invested capital the problem is somewhat
-similar to something like gambling, hence I use the kelly criterion here to
-estimate the maximum ratio of net capital to invest in a given run, plugging in
-the previous values we calculated: $f^* = (1 - P(F)) - \frac{P(F)}{b}$ where
-$b$ is our payout in this case expected profit $\pi{}$ which is estimated in
-the second step.
+time given path length $n$ and the rate parameter $\lambda{}$ (jumps follow a poisson process) after this we can construct a 98%
+confidence interval for the price of the asset at time $t$ using the asset's
+variance retrieved from historic data, monte carlo simulation, and geometric
+brownian motion. Third we need to calculate the probability of failure, as of
+right now this is somewhat hard to do it's possible to use machine learning
+here as a truly accurate picture will need to pull data from the player
+themselves as it's somewhat difficult to quantify a pilot's skill, so for now I
+have a fairly generic function $P(F) = P(g) * P(d)$ where $g$ is probability of
+getting ganked and $P(d)$ is the probability of dying to a gank. Lastly since
+the result of failure is total loss of all invested capital the problem is
+somewhat similar to something like gambling, hence I use the kelly criterion
+here to estimate the maximum ratio of net capital to invest in a given run,
+plugging in the previous values we calculated: $f^* = (1 - P(F)) -
+\frac{P(F)}{b}$ where $b$ is our payout in this case expected profit $\pi{}$
+which is estimated in the second step.
 
 ## Research Currently Required to Complete the Paper
  - At what rate does the security level across null sec change
