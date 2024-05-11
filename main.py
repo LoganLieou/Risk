@@ -62,7 +62,6 @@ def failure(sec_levels):
     return gank_pdf(sec_levels) * death_pdf()
 
 if __name__ == "__main__":
-
     s0 = 954278
     mu = (0.04) / 43830 # over a month
     sigma = np.sqrt(24277) / s0
